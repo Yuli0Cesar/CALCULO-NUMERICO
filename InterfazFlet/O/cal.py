@@ -6,11 +6,11 @@ def main(page:ft.Page):
         if dd2.value == "BINARIO":
             salida.value = entrada.value
         elif dd2.value == "TERNARIO":
-            pos = len(entrada)
+            pos = len(entrada.value)
             dec = 0
-            for i in reversed(enter):
+            for i in reversed(entrada.value):
                 if i == "1":
-                    dec = dec + pow(2,(len(entrada) - pos))
+                    dec = dec + pow(2,(len(entrada.value) - pos))
                 pos = pos - 1
             n = dec
             nums = []
@@ -20,11 +20,11 @@ def main(page:ft.Page):
             salida.value = ''.join(reversed(nums))
             page.update()
         elif dd2.value == "CUATERNARIO":
-            pos = len(entrada)
+            pos = len(entrada.value)
             dec = 0
-            for i in reversed(enter):
+            for i in reversed(entrada.value):
                 if i == "1":
-                    dec = dec + pow(2,(len(entrada) - pos))
+                    dec = dec + pow(2,(len(entrada.value) - pos))
                 pos = pos - 1
             n = dec
             nums = []
@@ -34,30 +34,30 @@ def main(page:ft.Page):
             salida.value = ''.join(reversed(nums))
             page.update()
         elif dd2.value == "OCTAL":
-            pos = len(entrada)
+            pos = len(entrada.value)
             dec = 0
-            for i in reversed(enter):
+            for i in reversed(entrada.value):
                 if i == "1":
-                    dec = dec + pow(2,(len(entrada) - pos))
+                    dec = dec + pow(2,(len(entrada.value) - pos))
                 pos = pos - 1
             salida.value = oct(int(dec))[2::]
             page.update()
         elif dd2.value == "DECIMAL":
             enter = entrada.value
-            pos = len(entrada)
+            pos = len(entrada.value)
             dec = 0
-            for i in reversed(enter):
+            for i in reversed(entrada.value):
                 if i == "1":
-                    dec = dec + pow(2,(len(entrada) - pos))
+                    dec = dec + pow(2,(len(entrada.value) - pos))
                 pos = pos - 1
             salida.value = str(dec)
             page.update()
         elif dd2.value == "HEXADECIMAL":
-            pos = len(entrada)
+            pos = len(entrada.value)
             dec = 0
-            for i in reversed(enter):
+            for i in reversed(entrada.value):
                 if i == "1":
-                    dec = dec + pow(2,(len(entrada) - pos))
+                    dec = dec + pow(2,(len(entrada.value) - pos))
                 pos = pos - 1
             salida.value = hex(int(dec))[2::]
             page.update()
@@ -227,7 +227,7 @@ def main(page:ft.Page):
         elif dd2.value == "HEXADECIMAL":
             salida.value = hex(int(entrada.value))[2::]
             page.update()
-            
+        
     def hexadecimal(e):
         if dd2.value == "BINARIO":
             dec = str(int(entrada.value,16))
@@ -258,7 +258,26 @@ def main(page:ft.Page):
             page.update()
         elif dd2.value == "HEXADECIMAL":
             salida.value = entrada.value
-    
+        
+    def erase(e):
+        entrada.value = ""
+        salida.value = ""
+        page.update()
+
+    def op(e):
+        if dd1.value == "BINARIO":
+            binario
+        elif dd1.value == "TERNARIO":
+            ternario
+        elif dd1.value == "CUATERNARIO":
+            cuaternario
+        elif dd1.value == "OCTAL":
+            octal
+        elif dd1.value == "DECIMAL":
+            decimal
+        elif dd1.value == "HEXADECIMAL":
+            hexadecimal
+
     page.bgcolor= ft.colors.BLUE_ACCENT_400
     page.window_height = "300"
     page.window_width = "750"
@@ -306,12 +325,13 @@ def main(page:ft.Page):
 
     b1 = ft.ElevatedButton(
         text = "AC",
-        bgcolor= ft.colors.BLUE_800
+        bgcolor= ft.colors.BLUE_800,
+        on_click=erase
     )
 
     b2 = ft.ElevatedButton(
         text = "=",
-        on_click=ternario
+        on_click=binario
     )
 
     contenedor1 = ft.Container(
