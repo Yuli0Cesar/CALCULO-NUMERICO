@@ -3,9 +3,9 @@ import flet as ft
 def main(page:ft.Page):
 
     def binario(e):
-        if dd1.value == "BINARIO" and dd2.value == "BINARIO":
+        if dd2.value == "BINARIO":
             salida.value = entrada.value
-        elif dd1.value == "BINARIO" and dd2.value == "TERNARIO":
+        elif dd2.value == "TERNARIO":
             pos = len(entrada)
             dec = 0
             for i in reversed(enter):
@@ -19,7 +19,7 @@ def main(page:ft.Page):
                 nums.append(str(r))
             salida.value = ''.join(reversed(nums))
             page.update()
-        elif dd1.value == "BINARIO" and dd2.value == "CUATERNARIO":
+        elif dd2.value == "CUATERNARIO":
             pos = len(entrada)
             dec = 0
             for i in reversed(enter):
@@ -33,7 +33,7 @@ def main(page:ft.Page):
                 nums.append(str(r))
             salida.value = ''.join(reversed(nums))
             page.update()
-        elif dd1.value == "BINARIO" and dd2.value == "OCTAL":
+        elif dd2.value == "OCTAL":
             pos = len(entrada)
             dec = 0
             for i in reversed(enter):
@@ -42,7 +42,7 @@ def main(page:ft.Page):
                 pos = pos - 1
             salida.value = oct(int(dec))[2::]
             page.update()
-        elif dd1.value == "BINARIO" and dd2.value == "DECIMAL":
+        elif dd2.value == "DECIMAL":
             enter = entrada.value
             pos = len(entrada)
             dec = 0
@@ -52,7 +52,7 @@ def main(page:ft.Page):
                 pos = pos - 1
             salida.value = str(dec)
             page.update()
-        elif dd1.value == "BINARIO" and dd2.value == "HEXADECIMAL":
+        elif dd2.value == "HEXADECIMAL":
             pos = len(entrada)
             dec = 0
             for i in reversed(enter):
@@ -63,17 +63,17 @@ def main(page:ft.Page):
             page.update()
 
     def ternario(e):
-        if dd1.value == "TERNARIO" and dd2.value == "BINARIO":
+        if dd2.value == "BINARIO":
             ter = entrada.value
             dec = 0
             for i, digit in enumerate(reversed(ter)):
                 dec += int(digit) * (3 ** i)
             salida.value = bin(int(dec))[2::]
             page.update()
-        elif dd1.value == "TERNARIO" and dd2.value == "TERNARIO":
+        elif dd2.value == "TERNARIO":
             salida.value = entrada.value
             page.update()
-        elif dd1.value == "TERNARIO" and dd2.value == "CUATERNARIO":
+        elif dd2.value == "CUATERNARIO":
             ter = entrada.value
             dec = 0
             for i, digit in enumerate(reversed(ter)):
@@ -84,55 +84,56 @@ def main(page:ft.Page):
                 nums.append(str(r))
             salida.value = ''.join(reversed(nums))
             page.update()
-        elif dd1.value == "TERNARIO" and dd2.value == "OCTAL":
+        elif dd2.value == "OCTAL":
             ter = entrada.value
             dec = 0
             for i, digit in enumerate(reversed(ter)):
                 dec += int(digit) * (3 ** i)
             salida.value = oct(int(dec))[2::]
             page.update()
-        elif dd1.value == "TERNARIO" and dd2.value == "DECIMAL":
+        elif dd2.value == "DECIMAL":
             ter = entrada.value
             dec = 0
             for i, digit in enumerate(reversed(ter)):
                 dec += int(digit) * (3 ** i)
-            dec = salida.value
+            salida.value = dec
             page.update()
-        elif dd1.value == "TERNARIO" and dd2.value == "HEXADECIMAL":
+        elif dd2.value == "HEXADECIMAL":
             ter = entrada.value
             dec = 0
             for i, digit in enumerate(reversed(ter)):
                 dec += int(digit) * (3 ** i)
             salida.value = hex(int(dec))[2::]
             page.update()
-            
+        
+
     def decimal(e):
-        if dd1.value == "DECIMAL" and dd2.value == "BINARIO":
+        if dd2.value == "BINARIO":
             salida.value = bin(int(entrada.value))[2::]
             page.update()
-        elif dd1.value == "DECIMAL" and dd2.value == "TERNARIO":
-            n = salida.value
+        elif dd2.value == "TERNARIO":
+            n = entrada.value
             nums = []
             while n:
                 n, r = divmod(n, 3)
                 nums.append(str(r))
             salida.value = ''.join(reversed(nums))
             page.update()
-        elif dd1.value == "DECIMAL" and dd2.value == "CUATERNARIO":
-            n = salida.value
+        elif dd2.value == "CUATERNARIO":
+            n = entrada.value
             nums = []
             while n:
                 n, r = divmod(n, 4)
                 nums.append(str(r))
             salida.value = ''.join(reversed(nums))
             page.update()
-        elif dd1.value == "DECIMAL" and dd2.value == "OCTAL":
+        elif dd2.value == "OCTAL":
             salida.value = oct(int(entrada.value))[2::]
             page.update()
-        elif dd1.value == "DECIMAL" and dd2.value == "DECIMAL":
+        elif dd2.value == "DECIMAL":
             salida.value = entrada.value
             page.update()
-        elif dd1.value == "DECIMAL" and dd2.value == "HEXADECIMAL":
+        elif dd2.value == "HEXADECIMAL":
             salida.value = hex(int(entrada.value))[2::]
             page.update()
 
@@ -187,7 +188,8 @@ def main(page:ft.Page):
     )
 
     b2 = ft.ElevatedButton(
-        text = "="
+        text = "=",
+        on_click=ternario
     )
 
     contenedor1 = ft.Container(
@@ -218,5 +220,6 @@ def main(page:ft.Page):
 
     row2 = ft.Row([b1, b2], alignment=ft.MainAxisAlignment.CENTER, vertical_alignment=ft.CrossAxisAlignment.END)
     page.add(row2)
+
 
 ft.app(target=main)
