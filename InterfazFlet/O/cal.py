@@ -105,7 +105,7 @@ def main(page:ft.Page):
                 dec += int(digit) * (3 ** i)
             salida.value = hex(int(dec))[2::]
             page.update()
-        
+
     def cuaternario(e):
         if dd2.value == "BINARIO":
             cua = entrada.value
@@ -197,7 +197,7 @@ def main(page:ft.Page):
                 dec += int(digit) * (8 ** i)
             salida.value = hex(int(dec))[2::]
             page.update()
-    
+
     def decimal(e):
         if dd2.value == "BINARIO":
             salida.value = bin(int(entrada.value))[2::]
@@ -227,7 +227,38 @@ def main(page:ft.Page):
         elif dd2.value == "HEXADECIMAL":
             salida.value = hex(int(entrada.value))[2::]
             page.update()
-
+            
+    def hexadecimal(e):
+        if dd2.value == "BINARIO":
+            dec = str(int(entrada.value,16))
+            salida.value = bin(int(dec))[2::]
+            page.update()
+        elif dd2.value == "TERNARIO":
+            dec = str(int(entrada.value,16))
+            nums = []
+            while dec:
+                dec, r = divmod(dec, 3)
+                nums.append(str(r))
+            salida.value = ''.join(reversed(nums))
+            page.update()
+        elif dd2.value == "CUATERNARIO":
+            dec = str(int(entrada.value,16))
+            nums = []
+            while dec:
+                dec, r = divmod(dec, 4)
+                nums.append(str(r))
+            salida.value = ''.join(reversed(nums))
+            page.update()
+        elif dd2.value == "OCTAL":
+            dec = str(int(entrada.value,16))
+            salida.value = oct(int(dec))[2::]
+            page.update()
+        elif dd2.value == "DECIMAL":
+            salida.value = str(int(entrada.value,16))
+            page.update()
+        elif dd2.value == "HEXADECIMAL":
+            salida.value = entrada.value
+    
     page.bgcolor= ft.colors.BLUE_ACCENT_400
     page.window_height = "300"
     page.window_width = "750"
