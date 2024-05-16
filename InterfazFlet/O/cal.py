@@ -149,6 +149,54 @@ def main(page:ft.Page):
                 dec += int(digit) * (4 ** i)
             salida.value = hex(int(dec))[2::]
             page.update()
+
+    def octal(e):
+        if dd2.value == "BINARIO":
+            oct = entrada.value
+            dec = 0
+            for i, digit in enumerate(reversed(oct)):
+                dec += int(digit) * (8 ** i)
+            salida.value = bin(int(dec))[2::]
+            page.update()
+        elif dd2.value == "TERNARIO":
+            oct = entrada.value
+            dec = 0
+            for i, digit in enumerate(reversed(oct)):
+                dec += int(digit) * (8 ** i)
+            nums = []
+            while dec:
+                dec, r = divmod(dec, 3)
+                nums.append(str(r))
+            salida.value = ''.join(reversed(nums))
+            page.update()
+        elif dd2.value == "CUATERNARIO":
+            oct = entrada.value
+            dec = 0
+            for i, digit in enumerate(reversed(oct)):
+                dec += int(digit) * (8 ** i)
+            nums = []
+            while dec:
+                dec, r = divmod(dec, 4)
+                nums.append(str(r))
+            salida.value = ''.join(reversed(nums))
+            page.update()
+        elif dd2.value == "OCTAL":
+            salida.value = entrada.value
+            page.update()
+        elif dd2.value == "DECIMAL":
+            oct = entrada.value
+            dec = 0
+            for i, digit in enumerate(reversed(oct)):
+                dec += int(digit) * (8 ** i)
+            salida.value = dec
+            page.update()
+        elif dd2.value == "HEXADECIMAL":
+            oct = entrada.value
+            dec = 0
+            for i, digit in enumerate(reversed(oct)):
+                dec += int(digit) * (8 ** i)
+            salida.value = hex(int(dec))[2::]
+            page.update()
     
     def decimal(e):
         if dd2.value == "BINARIO":
