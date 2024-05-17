@@ -266,17 +266,17 @@ def main(page:ft.Page):
 
     def op(e):
         if dd1.value == "BINARIO":
-            binario
+            binario(e)
         elif dd1.value == "TERNARIO":
-            ternario
+            ternario(e)
         elif dd1.value == "CUATERNARIO":
-            cuaternario
+            cuaternario(e)
         elif dd1.value == "OCTAL":
-            octal
+            octal(e)
         elif dd1.value == "DECIMAL":
-            decimal
+            decimal(e)
         elif dd1.value == "HEXADECIMAL":
-            hexadecimal
+            hexadecimal(e)
 
     page.bgcolor= ft.colors.BLUE_ACCENT_400
     page.window_height = "300"
@@ -331,7 +331,7 @@ def main(page:ft.Page):
 
     b2 = ft.ElevatedButton(
         text = "=",
-        on_click=binario
+        on_click=op
     )
 
     contenedor1 = ft.Container(
